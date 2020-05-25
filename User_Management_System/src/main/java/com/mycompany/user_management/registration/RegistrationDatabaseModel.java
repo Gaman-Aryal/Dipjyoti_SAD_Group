@@ -5,14 +5,24 @@
  */
 package com.mycompany.user_management.registration;
 
+import java.io.UnsupportedEncodingException;
 import static java.lang.Character.isUpperCase;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -102,6 +112,28 @@ public class RegistrationDatabaseModel {
         this.confirmpassword = confirmpassword;
     }
 
+    public String insertIntoAdminIsValid() {
+        String str = admin;
+        String checked = "error";
+
+        for (int i = 0; i < str.length(); i++) {
+
+            //Checks whether a filled contain y or not   
+            if (str.charAt(i) == 'y' || str.charAt(i) == 'Y') {
+                setAdmin("No");
+                checked = "ok";
+
+                //Checks whether a filled contain n or not
+            } else if (str.charAt(i) == 'N' || str.charAt(i) == 'n') {
+                setAdmin("No");
+                checked = "notok";
+            }
+        }
+
+        return checked;
+
+    }
+
     public boolean filledDataAreTooLong() {
         Boolean checked = true;
         String[] Array = new String[]{firstname, lastname, username};
@@ -121,54 +153,6 @@ public class RegistrationDatabaseModel {
 
     }
 
-    public boolean insertIntoAdminIsValid() {
-        String str = admin;
-        Boolean checked = false;
-        int NumberOfdigit = 0;
-
-        for (int i = 0; i < str.length(); i++) {
-
-            //Checks whether a filled contain y or not   
-            if (str.charAt(i) == 'y' || str.charAt(i) == 'Y') {
-                setAdmin("Yes");
-                NumberOfdigit++;
-
-                //Checks whether a filled contain n or not
-            } else if (str.charAt(i) == 'n' || str.charAt(i) == 'N') {
-                setAdmin("No");
-                NumberOfdigit++;
-
-            } else {
-                checked = false;
-            }
-        }
-
-        if (NumberOfdigit == 1) {
-            checked = true;
-        }
-        return checked;
-
-    }
-
-//    public boolean phoneNumberIsValid(){
-//        String str = phonenumber;
-//        Boolean checked = false;
-//        int NumberOfvaliddigit=0;
-//        
-//        for(int i = 0; i <= str.length(); i++) {  
-//            //Converting character into ASCII number            
-//            int ascii = str.charAt(i);
-//            //Checks whether phonenumber is valid or not    
-//            if((ascii>=48 && ascii<=57)) { 
-//                NumberOfvaliddigit++;
-//            }
-//        }
-//        if(NumberOfvaliddigit ==10){
-//            checked = true;
-//        }
-//        return checked;
-//    } 
-//    
     public boolean insertIntoGenderIsValid() {
         String str = gender;
         Boolean checked = false;
@@ -369,4 +353,72 @@ public class RegistrationDatabaseModel {
 
     }
 
+    public void generateCodeAndSendItToSeniourAdmin() throws ClassNotFoundException, SQLException, UnsupportedEncodingException, MessagingException {
+
+        String[] AdminsEmail = {"gamanaryal@gmail.com","gauravraut305@gmail.com" , "jitenghi9@gmail.com", "melonchhetri@gmail.com"};
+        Random randomadmin = new Random();
+        int randomadminmin = 0;
+        int randomadminmax = 3;
+        int randomadminresult = randomadmin.nextInt(randomadminmax - randomadminmin) + randomadminmin;
+
+        String str = "";
+
+        Random r = new Random();
+        int min = 100000000;
+        int max = 1000000000;
+        int res = r.nextInt(max - min) + min;
+
+        for (int i = 0; i <= 4; i++) {
+            //checks that the last two digits fall under the ASCII number
+            int remainder = res % 100;
+            if ((remainder >= 63) && (remainder <= 90) || (remainder >= 35) && (remainder <= 38) || (remainder >= 97) && (remainder <= 122)) {
+
+                str = Character.toString((char) remainder) + str;
+            } else {
+                str = Integer.toString(remainder) + str;
+            }
+            res = (res - (remainder % 10)) / 100;
+        }
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "")) {
+            String Sql_Query = "update adminverificationcode set code=? , email=? , emailreceiveradminemail=? where serial=1";
+            PreparedStatement Pre_Stat = conn.prepareStatement(Sql_Query);
+            Pre_Stat.setString(1, str);
+            Pre_Stat.setString(2, email);
+            Pre_Stat.setString(3, AdminsEmail[randomadminresult]);
+            Pre_Stat.executeUpdate();
+        }
+
+        String Mail_Subject = "New Admin Registration";
+        String Mail_Content = "<h1> Here is the code for the New Admin Registration :-<b> " + str + "</b></h1><br><h3> Name :- " + firstname + " " + lastname + " <br> Email :- " + email + "</h3>";
+
+        Properties properties = new Properties();
+
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+
+        Session session = Session.getInstance(properties,
+                new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("usermanagementsystem123@gmail.com", "Management@123");
+            }
+        });
+
+        // creates a new e-mail message
+        Message msg = new MimeMessage(session);
+
+        msg.setFrom(new InternetAddress("usermanagementsystem123@gmail.com", "User Management System"));
+        InternetAddress[] toAddresses = {new InternetAddress(AdminsEmail[randomadminresult])};
+        msg.setRecipients(Message.RecipientType.TO, toAddresses);
+        msg.setSubject(Mail_Subject);
+        msg.setContent(Mail_Content, "text/html");
+
+        // sends the e-mail
+        Transport.send(msg);
+
+    }
 }

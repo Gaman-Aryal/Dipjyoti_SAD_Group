@@ -7,6 +7,11 @@ package com.mycompany.user_management.registration;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +36,7 @@ public class Register extends HttpServlet {
     RegistrationDatabaseModel newuser = new RegistrationDatabaseModel();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException, UnsupportedEncodingException, MessagingException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -48,13 +53,9 @@ public class Register extends HttpServlet {
             newuser.setPassword(request.getParameter("password"));
             newuser.setConfirmpassword(request.getParameter("confirmpassword"));
 
-//            if (newuser.fieldIsEmpty()==true) {
-//                out.print("Do not leave field empty");
-//            } else 
-            if (newuser.insertIntoAdminIsValid() == false) {
-                out.println("<font color=red>Enter Y/N in Admin box.</font>");
-                rd.include(request, response);
-            } else if (newuser.insertIntoGenderIsValid() == false) {
+        String adminresult = newuser.insertIntoAdminIsValid();
+            
+            if (newuser.insertIntoGenderIsValid() == false) {
                 out.println("<font color=red>Enter Y/N in Gender box.</font>");
                 rd.include(request, response);
             } else if (newuser.usernameDoesExist() == true) {
@@ -78,13 +79,23 @@ public class Register extends HttpServlet {
             } else if (newuser.filledDataAreTooLong() == true) {
                 out.println("<font color=red>Firstname, Lastname and Username must be less than 15 digits.</font>");
                 rd.include(request, response);
-            } else if (newuser.passwordIsSameAsUsername()==true) {
+            } else if (newuser.passwordIsSameAsUsername() == true) {
                 out.println("<font color=red>Username and Password can not be same .</font>");
                 rd.include(request, response);
-            } else {
+            } else if (adminresult.equals("error")) {
+                out.println("<font color=red>Enter Y/N in Admin ? box.</font>");
+                rd.include(request, response);
+            } else if (adminresult.equals("notok")) {
                 newuser.addNewUser();
-                response.sendRedirect("http://localhost:8080/User_Management/login/login.jsp");
-
+                response.sendRedirect("http://localhost:8080/User_Management_System/login/login.jsp");
+            }else if (adminresult.equals("ok")) {
+                newuser.addNewUser();
+                newuser.generateCodeAndSendItToSeniourAdmin();
+                response.sendRedirect("http://localhost:8080/User_Management_System/adminverificationpage.jsp");
+            }else{
+                out.println("<font color=red>Sorry Server Down.</font>");
+                rd.include(request, response);
+                
             }
         }
     }
@@ -97,11 +108,16 @@ public class Register extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.io.UnsupportedEncodingException
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException, UnsupportedEncodingException {
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException | SQLException | MessagingException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -111,11 +127,16 @@ public class Register extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.io.UnsupportedEncodingException
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException, UnsupportedEncodingException {
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException | SQLException | MessagingException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

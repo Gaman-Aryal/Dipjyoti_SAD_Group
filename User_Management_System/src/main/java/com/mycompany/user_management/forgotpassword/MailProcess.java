@@ -6,7 +6,6 @@
 package com.mycompany.user_management.forgotpassword;
 
 import com.mycompany.user_management.registration.RegistrationDatabaseModel;
-import com.mycompany.user_management.updatepassword.UpdatePasswordDatabaseModel;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -215,7 +214,7 @@ public class MailProcess {
             + "        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width: 600px;\">\n"
             + "          <tr>\n"
             + "            <td align=\"center\" valign=\"top\" style=\"padding: 36px 24px;\">\n"
-            + "              <a href=\"http://localhost:8080/User_Management/homepage.jsp\" target=\"_blank\" style=\"display: inline-block;\">\n"
+            + "              <a href=\"http://localhost:8080/User_Management_System/homepage.jsp\" target=\"_blank\" style=\"display: inline-block;\">\n"
             + "                <img src=\"logo.jpg\" alt=\"Logo\" border=\"0\" width=\"48\" style=\"display: block; width: 48px; max-width: 48px; min-width: 48px;\">\n"
             + "              </a>\n"
             + "            </td>\n"
@@ -281,7 +280,7 @@ public class MailProcess {
             + "                    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n"
             + "                      <tr>\n"
             + "                        <td align=\"center\" bgcolor=\"#1a82e2\" style=\"border-radius: 6px;\">\n"
-            + "                          <a href=\"http://localhost:8080/User_Management/entercode.jsp\" target=\"_blank\" style=\"display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;\">Reset Password</a>\n"
+            + "                          <a href=\"http://localhost:8080/User_Management_System/entercode.jsp\" target=\"_blank\" style=\"display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;\">Reset Password</a>\n"
             + "                        </td>\n"
             + "                      </tr>\n"
             + "                    </table>\n"
@@ -297,7 +296,7 @@ public class MailProcess {
             + "            <td align=\"left\" bgcolor=\"#ffffff\" style=\"padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;\">\n"
             + "		\n"
             + "              <p style=\"margin: 0;\">If that doesn't work, Copy paste the following link in your browser or simply click to move to the User Management System:</p>\n"
-            + "              <p style=\"margin: 0;\"><a href=\"http://localhost:8080/User_Management/entercode.jsp\" target=\"_blank\">http://localhost:8080/User_Management/entercode.jsp</a></p>\n"
+            + "              <p style=\"margin: 0;\"><a href=\"http://localhost:8080/User_Management_System/entercode.jsp\" target=\"_blank\">http://localhost:8080/User_Management_System/entercode.jsp</a></p>\n"
             + "            </td>\n"
             + "          </tr>\n"
             + "          <!-- end copy -->\n"

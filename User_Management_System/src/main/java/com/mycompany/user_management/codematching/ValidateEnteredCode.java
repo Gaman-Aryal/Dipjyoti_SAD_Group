@@ -45,7 +45,7 @@ public class ValidateEnteredCode extends HttpServlet {
 
             if (tc.codeIsRight() == true) {
 //                tc.doChange();
-                response.sendRedirect("http://localhost:8080/User_Management/createnewpassword.jsp");
+                response.sendRedirect("http://localhost:8080/User_Management_System/createnewpassword.jsp");
             } else {
                 out.println("<font color=red>Sorry , Try Again </font>");
                 rd.include(request, response);

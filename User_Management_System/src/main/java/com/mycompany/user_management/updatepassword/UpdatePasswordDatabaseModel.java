@@ -143,14 +143,13 @@ public class UpdatePasswordDatabaseModel {
     public void updatePassword() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "");
-
-            String Sql_Query = "update users set password = ? where email=?";
-            PreparedStatement Pre_Stat = conn.prepareStatement(Sql_Query);
-            Pre_Stat.setString(1, Updatepassword);
-            Pre_Stat.setString(2, Checkemail);
-            Pre_Stat.executeUpdate();
-            conn.close();
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "")) {
+                String Sql_Query = "update users set password = ? where email=?";
+                PreparedStatement Pre_Stat = conn.prepareStatement(Sql_Query);
+                Pre_Stat.setString(1, Updatepassword);
+                Pre_Stat.setString(2, Checkemail);
+                Pre_Stat.executeUpdate();
+            }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(UpdatePasswordDatabaseModel.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -10,6 +10,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>AdminVerification</servlet-name>
+        <servlet-class>com.mycompany.user_management.registration.AdminVerification</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminVerification</servlet-name>
+        <url-pattern>/AdminVerification</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>LoginToSystem</servlet-name>
         <servlet-class>com.mycompany.user_management.login.LoginToSystem</servlet-class>
     </servlet>
@@ -17,7 +26,6 @@
         <servlet-name>LoginToSystem</servlet-name>
         <url-pattern>/login/LoginToSystem</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>EmailForPasswordReset</servlet-name>
         <servlet-class>com.mycompany.user_management.forgotpassword.EmailForPasswordReset</servlet-class>
@@ -26,7 +34,6 @@
         <servlet-name>EmailForPasswordReset</servlet-name>
         <url-pattern>/EmailForPasswordReset</url-pattern>
     </servlet-mapping>
-     
     <servlet>
         <servlet-name>ValidateEnteredCode</servlet-name>
         <servlet-class>com.mycompany.user_management.codematching.ValidateEnteredCode</servlet-class>
@@ -35,7 +42,6 @@
         <servlet-name>ValidateEnteredCode</servlet-name>
         <url-pattern>/ValidateEnteredCode</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>UpdatePassword</servlet-name>
         <servlet-class>com.mycompany.user_management.updatepassword.UpdatePassword</servlet-class>
@@ -44,16 +50,14 @@
         <servlet-name>UpdatePassword</servlet-name>
         <url-pattern>/UpdatePassword</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>com.mycompany.user_management.logout.Logout</servlet-class>
-    </servlet>  
+    </servlet>
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
-    
     <context-param>
         <param-name>host</param-name>
         <param-value>smtp.gmail.com</param-value>

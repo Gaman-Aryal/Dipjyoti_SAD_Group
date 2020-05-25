@@ -62,7 +62,7 @@ public class LoginToSystem extends HttpServlet {
             if(r1.next()==true) {
                 HttpSession SessionID = request.getSession();
                 SessionID.setAttribute("loginemail", loginemail);
-                response.sendRedirect("http://localhost:8080/User_Management/homepage.jsp");
+                response.sendRedirect("http://localhost:8080/User_Management_System/homepage.jsp");
 //                RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginSuccess.jsp");
 //                rd.include(request, response);
             }else {
