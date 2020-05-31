@@ -35,7 +35,6 @@ public class MailProcess {
     String port;
     String str = "";
     String Mail_Subject;
-    
 
     public void setHostname(String hostname) {
         this.hostname = hostname;
@@ -48,7 +47,7 @@ public class MailProcess {
     public void setMailReceiverID(String MailReceiverID) {
         this.MailReceiverID = MailReceiverID;
     }
-    
+
     public String getMailReceiverID() {
         return MailReceiverID;
     }
@@ -75,20 +74,26 @@ public class MailProcess {
 
     public String generateCode() throws ClassNotFoundException, SQLException {
         Random r = new Random();
-        int min = 100000000;
-        int max = 1000000000;
+        int min = 10000;
+        int max = 100000;
         int res = r.nextInt(max - min) + min;
 
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i <= 5; i++) {
             //checks that the last two digits fall under the ASCII number
             int remainder = res % 100;
             if ((remainder >= 63) && (remainder <= 90) || (remainder >= 35) && (remainder <= 38) || (remainder >= 97) && (remainder <= 122)) {
 
                 str = Character.toString((char) remainder) + str;
             } else {
-                str = Integer.toString(remainder) + str;
+
+                Random ren = new Random();
+                int renmin = 49;
+                int renmax = 57;
+                int renres = ren.nextInt(renmax - renmin) + renmin;
+                remainder = (renres - remainder) + remainder;
+                str = Character.toString((char) remainder) + str;
             }
-            res = (res - (remainder % 10)) / 100;
+            res = (res - (remainder % 10)) / 10;
         }
 
         Class.forName("com.mysql.cj.jdbc.Driver");

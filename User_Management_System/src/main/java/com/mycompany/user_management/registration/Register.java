@@ -53,8 +53,8 @@ public class Register extends HttpServlet {
             newuser.setPassword(request.getParameter("password"));
             newuser.setConfirmpassword(request.getParameter("confirmpassword"));
 
-        String adminresult = newuser.insertIntoAdminIsValid();
-            
+            String adminresult = newuser.insertIntoAdminIsValid();
+
             if (newuser.insertIntoGenderIsValid() == false) {
                 out.println("<font color=red>Enter Y/N in Gender box.</font>");
                 rd.include(request, response);
@@ -66,9 +66,6 @@ public class Register extends HttpServlet {
                 rd.include(request, response);
             } else if (newuser.emailDoesContainAatAndDot() == false) {
                 out.println("<font color=red>E-mail is not valid.</font>");
-                rd.include(request, response);
-            } else if (newuser.passwordDoesExist() == true) {
-                out.println("<font color=red>Try another password we can not take " + newuser.getPassword() + ".</font>");
                 rd.include(request, response);
             } else if (newuser.passwordIsValid() == false) {
                 out.println("<font color=red>Password must be 8 to 16 digit long and must contain uppercase, special character and number.</font>");
@@ -88,14 +85,14 @@ public class Register extends HttpServlet {
             } else if (adminresult.equals("notok")) {
                 newuser.addNewUser();
                 response.sendRedirect("http://localhost:8080/User_Management_System/login/login.jsp");
-            }else if (adminresult.equals("ok")) {
+            } else if (adminresult.equals("ok")) {
                 newuser.addNewUser();
                 newuser.generateCodeAndSendItToSeniourAdmin();
                 response.sendRedirect("http://localhost:8080/User_Management_System/adminverificationpage.jsp");
-            }else{
+            } else {
                 out.println("<font color=red>Sorry Server Down.</font>");
                 rd.include(request, response);
-                
+
             }
         }
     }

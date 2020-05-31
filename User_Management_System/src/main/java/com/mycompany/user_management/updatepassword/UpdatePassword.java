@@ -55,7 +55,7 @@ public class UpdatePassword extends HttpServlet {
             } else if (updm.passwordsAreSame() == false) {
                 out.println("<font color=red>Passwords are not matching.</font>");
                 rd.include(request, response);
-            } else if (updm.UsernameOrPasswordAsSameAsEnteredPasswordDoesExist() == true) {
+            } else if (updm.UsernameAsSameAsEnteredPasswordDoesExist() == true) {
                 out.println("<font color=red>We can not take password :- " + request.getParameter("updatepassword") + " please change it.</font>");
                 rd.include(request, response);
             } else {

@@ -5,9 +5,13 @@
  */
 package com.mycompany.user_management.updatepassword;
 
-import com.mycompany.user_management.forgotpassword.MailProcess;
+import com.mycompany.user_management.registration.PasswordEncryptionAndDecryption;
 import com.mycompany.user_management.registration.RegistrationDatabaseModel;
+import java.io.UnsupportedEncodingException;
 import static java.lang.Character.isUpperCase;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,6 +19,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 /**
  *
@@ -25,7 +32,7 @@ public class UpdatePasswordDatabaseModel {
     private String Checkemail;
     private String Updatepassword;
     private String Updateconfirmpassword;
-    
+
     public String getUpdatepassword() {
         return Updatepassword;
     }
@@ -50,15 +57,15 @@ public class UpdatePasswordDatabaseModel {
         return checked;
     }
 
-    public boolean UsernameOrPasswordAsSameAsEnteredPasswordDoesExist() {
+    public boolean UsernameAsSameAsEnteredPasswordDoesExist() {
         Boolean checked = false;
         try {
+
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "");
-            String Sql_Query = "select * from users where username = ? or password = ?";
+            String Sql_Query = "select * from users where username = ?";
 
             PreparedStatement Pre_Stat = conn.prepareStatement(Sql_Query);
-            Pre_Stat.setString(1, Updatepassword);
             Pre_Stat.setString(1, Updatepassword);
             ResultSet r1 = Pre_Stat.executeQuery();
 
@@ -142,6 +149,9 @@ public class UpdatePasswordDatabaseModel {
 
     public void updatePassword() {
         try {
+
+            PasswordEncryptionAndDecryption pead = new PasswordEncryptionAndDecryption();
+            setUpdatepassword(pead.encryptPassword(Updatepassword));
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "")) {
                 String Sql_Query = "update users set password = ? where email=?";
@@ -150,17 +160,17 @@ public class UpdatePasswordDatabaseModel {
                 Pre_Stat.setString(2, Checkemail);
                 Pre_Stat.executeUpdate();
             }
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (ClassNotFoundException | SQLException | UnsupportedEncodingException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidAlgorithmParameterException ex) {
             Logger.getLogger(UpdatePasswordDatabaseModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void setBackToNormal(){
-        
+
+    public void setBackToNormal() {
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "");
-            
+
             String Sql_Query = "update resetpasswordrecord set code=? , email=?  where serial=1";
             PreparedStatement Pre_Stat = conn.prepareStatement(Sql_Query);
             Pre_Stat.setString(1, "");

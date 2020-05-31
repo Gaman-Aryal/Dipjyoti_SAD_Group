@@ -36,21 +36,21 @@ public class AdminVerification extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-        
+
             AdminVerificationSteps avs = new AdminVerificationSteps();
-            
+
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/adminverificationpage.jsp");
-            
+
             avs.setEnteredEmailAccount(request.getParameter("enteredadminemail"));
             avs.setEnteredAdminCode(request.getParameter("enteredadminverificationcode"));
-            
-            if (avs.enteredEmailIsGenuine()==false) {
+
+            if (avs.enteredEmailIsGenuine() == false) {
                 avs.setBackToNormal();
                 out.println("<font color=red>It seems you are not eligible to be an Admin of our System.<br> You tried to fool us with other email Account ??? <br>Now We decided to treat you as a Normal User(NOT ADMIN) until Admin verify You(In Person).<br></font>");
-            }else if(avs.codeIsRight()==false){
+            } else if (avs.codeIsRight() == false) {
                 out.println("<font color=red>Please enter the correct code again .</font>");
                 rd.include(request, response);
-            }else{
+            } else {
                 avs.updateAdminFilled();
                 avs.setBackToNormal();
                 response.sendRedirect("http://localhost:8080/User_Management_System/login/login.jsp");
