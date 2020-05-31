@@ -58,7 +58,7 @@ public class LoginToSystem extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 
-            RequestDispatcher rd1 = getServletContext().getRequestDispatcher("/login.jsp");
+            RequestDispatcher rd1 = getServletContext().getRequestDispatcher("/index.jsp");
 
             String loginemail = request.getParameter("loginemail");
             String loginpassword = request.getParameter("loginpassword");

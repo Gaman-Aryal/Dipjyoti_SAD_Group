@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <a href="login/login.jsp"></a>
+    <a href="index.jsp"></a>
     <style type="text/css">
         /* FONTS */
         @media screen {
@@ -83,7 +83,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="480" >
                     <tr>
                         <td align="center" valign="top" style="padding: 40px 10px 40px 10px;">
-                            <a href="login/login.jsp" target="_blank">
+                            <a href="index.jsp" target="_blank">
                                 <img alt="Logo" src="logo.jpg" width="100" height="100" style="display: block;  font-family: 'Lato', Helvetica, Arial, sans-serif; color: #ffffff; font-size: 18px;" border="0">
                             </a>
                         </td>

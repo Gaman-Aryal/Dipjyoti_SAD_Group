@@ -351,10 +351,10 @@ public class RegistrationDatabaseModel {
 
     public void generateCodeAndSendItToSeniourAdmin() throws ClassNotFoundException, SQLException, UnsupportedEncodingException, MessagingException {
 
-        String[] AdminsEmail = {"gamanaryal@gmail.com", "gauravraut305@gmail.com", "jitenghi9@gmail.com", "melonchhetri@gmail.com"};
+        String[] AdminsEmail = {"gamanaryal@gmail.com", "gauravraut305@gmail.com","np03a180057@heraldcollege.edu.np", "jitenghi9@gmail.com", "melonchhetri@gmail.com"};
         Random randomadmin = new Random();
         int randomadminmin = 0;
-        int randomadminmax = 3;
+        int randomadminmax = 4;
         int randomadminresult = randomadmin.nextInt(randomadminmax - randomadminmin) + randomadminmin;
 
         String str = "";

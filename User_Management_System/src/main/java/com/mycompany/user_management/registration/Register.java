@@ -41,7 +41,7 @@ public class Register extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/signup/signup.jsp");
 
             newuser.setAdmin(request.getParameter("admin"));
             newuser.setFirstname(request.getParameter("firstname"));
@@ -84,7 +84,7 @@ public class Register extends HttpServlet {
                 rd.include(request, response);
             } else if (adminresult.equals("notok")) {
                 newuser.addNewUser();
-                response.sendRedirect("http://localhost:8080/User_Management_System/login/login.jsp");
+                response.sendRedirect("http://localhost:8080/User_Management_System/index.jsp");
             } else if (adminresult.equals("ok")) {
                 newuser.addNewUser();
                 newuser.generateCodeAndSendItToSeniourAdmin();

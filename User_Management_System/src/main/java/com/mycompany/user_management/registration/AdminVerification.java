@@ -53,7 +53,7 @@ public class AdminVerification extends HttpServlet {
             } else {
                 avs.updateAdminFilled();
                 avs.setBackToNormal();
-                response.sendRedirect("http://localhost:8080/User_Management_System/login/login.jsp");
+                response.sendRedirect("http://localhost:8080/User_Management_System/index.jsp");
             }
         }
     }

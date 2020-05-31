@@ -6,7 +6,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
-        <url-pattern>/Register</url-pattern>
+        <url-pattern>/signup/Register</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -24,7 +24,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginToSystem</servlet-name>
-        <url-pattern>/login/LoginToSystem</url-pattern>
+        <url-pattern>/LoginToSystem</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>EmailForPasswordReset</servlet-name>

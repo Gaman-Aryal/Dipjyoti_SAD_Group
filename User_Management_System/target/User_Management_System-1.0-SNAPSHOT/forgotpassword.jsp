@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<a href="login/login.jsp"></a>
+<a href="index.jsp"></a>
 <style type="text/css">
 	/* FONTS */
     @media screen {
@@ -82,7 +82,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="480" >
                 <tr>
                     <td align="center" valign="top" style="padding: 40px 10px 40px 10px;">
-                        <a href="login/login.jsp" target="_blank">
+                        <a href="index.jsp" target="_blank">
                             <img alt="Logo" src="logo.jpg" width="100" height="100" style="display: block;  font-family: 'Lato', Helvetica, Arial, sans-serif; color: #ffffff; font-size: 18px;" border="0">
                         </a>
                     </td>
@@ -153,7 +153,7 @@
                 <!-- COPY -->
                 <tr>
                   <td bgcolor="#111111" align="left" style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
-                    <p style="margin: 0;"><a href="login/login.jsp"  style="color: #7c72dc;">Click here to Login</a></p>
+                    <p style="margin: 0;"><a href="index.jsp"  style="color: #7c72dc;">Click here to Login</a></p>
                   </td>
                 </tr>
             </table>
@@ -167,7 +167,7 @@
                 <tr>
                   <td bgcolor="#C6C2ED" align="center" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
                     <h2 style="font-size: 20px; font-weight: 400; color: #111111; margin: 0;">You wanna create a Account?</h2>
-                    <p style="margin: 0;"><a href="index.jsp"  style="color: #7c72dc;">Click here to create Account</a></p>
+                    <p style="margin: 0;"><a href="signup/signup.jsp"  style="color: #7c72dc;">Click here to create Account</a></p>
                   </td>
                 </tr>
             </table>
@@ -189,7 +189,7 @@
               <!-- ADDRESS -->
               <tr>
                 <td bgcolor="#f4f4f4" align="left" style="padding: 0px 30px 30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;" >
-                  <p style="margin: 0;">User Management System , Designed and created by Gaman Aryal</p>
+                  <p style="margin: 0;">User Management System , Designed and created by Gaman Aryal and Team</p>
                 </td>
               </tr>
             </table>
