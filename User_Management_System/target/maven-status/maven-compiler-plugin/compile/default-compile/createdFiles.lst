@@ -1,0 +1,11 @@
+com\mycompany\user_management\codematching\TestEnteredCode.class
+com\mycompany\user_management\updatepassword\UpdatePassword.class
+com\mycompany\user_management\codematching\ValidateEnteredCode.class
+com\mycompany\user_management\forgotpassword\EmailForPasswordReset.class
+com\mycompany\user_management\registration\PasswordEncryptionAndDecryption.class
+com\mycompany\user_management\registration\RegistrationDatabaseModel.class
+com\mycompany\user_management\forgotpassword\MailProcess$1.class
+com\mycompany\user_management\forgotpassword\MailProcess.class
+com\mycompany\user_management\login\LoginToSystem.class
+com\mycompany\user_management\registration\Register.class
+com\mycompany\user_management\updatepassword\UpdatePasswordDatabaseModel.class
