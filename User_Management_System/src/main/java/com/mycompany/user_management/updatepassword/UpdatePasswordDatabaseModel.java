@@ -171,10 +171,9 @@ public class UpdatePasswordDatabaseModel {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "");
 
-            String Sql_Query = "update resetpasswordrecord set code=? , email=?  where serial=1";
+            String Sql_Query = "update resetpasswordrecord set code=? where serial=1";
             PreparedStatement Pre_Stat = conn.prepareStatement(Sql_Query);
             Pre_Stat.setString(1, "");
-            Pre_Stat.setString(2, "");
             Pre_Stat.executeUpdate();
             conn.close();
         } catch (ClassNotFoundException | SQLException ex) {
