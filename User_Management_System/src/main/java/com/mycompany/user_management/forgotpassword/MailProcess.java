@@ -35,6 +35,7 @@ public class MailProcess {
     String port;
     String str = "";
     String Mail_Subject;
+    
 
     public void setHostname(String hostname) {
         this.hostname = hostname;
@@ -47,7 +48,7 @@ public class MailProcess {
     public void setMailReceiverID(String MailReceiverID) {
         this.MailReceiverID = MailReceiverID;
     }
-
+    
     public String getMailReceiverID() {
         return MailReceiverID;
     }
@@ -74,26 +75,20 @@ public class MailProcess {
 
     public String generateCode() throws ClassNotFoundException, SQLException {
         Random r = new Random();
-        int min = 10000;
-        int max = 100000;
+        int min = 100000000;
+        int max = 1000000000;
         int res = r.nextInt(max - min) + min;
 
-        for (int i = 0; i <= 5; i++) {
+        for (int i = 0; i <= 4; i++) {
             //checks that the last two digits fall under the ASCII number
             int remainder = res % 100;
             if ((remainder >= 63) && (remainder <= 90) || (remainder >= 35) && (remainder <= 38) || (remainder >= 97) && (remainder <= 122)) {
 
                 str = Character.toString((char) remainder) + str;
             } else {
-
-                Random ren = new Random();
-                int renmin = 49;
-                int renmax = 57;
-                int renres = ren.nextInt(renmax - renmin) + renmin;
-                remainder = (renres - remainder) + remainder;
-                str = Character.toString((char) remainder) + str;
+                str = Integer.toString(remainder) + str;
             }
-            res = (res - (remainder % 10)) / 10;
+            res = (res - (remainder % 10)) / 100;
         }
 
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -219,7 +214,7 @@ public class MailProcess {
             + "        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width: 600px;\">\n"
             + "          <tr>\n"
             + "            <td align=\"center\" valign=\"top\" style=\"padding: 36px 24px;\">\n"
-            + "              <a href=\"http://localhost:8080/User_Management_System/index.jsp\" target=\"_blank\" style=\"display: inline-block;\">\n"
+            + "              <a href=\"http://localhost:8080/User_Management_System/homepage.jsp\" target=\"_blank\" style=\"display: inline-block;\">\n"
             + "                <img src=\"logo.jpg\" alt=\"Logo\" border=\"0\" width=\"48\" style=\"display: block; width: 48px; max-width: 48px; min-width: 48px;\">\n"
             + "              </a>\n"
             + "            </td>\n"
@@ -345,7 +340,7 @@ public class MailProcess {
             + "          <!-- start unsubscribe -->\n"
             + "          <tr>\n"
             + "            <td align=\"center\" bgcolor=\"#e9ecef\" style=\"padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;\">\n"
-            + "              <p style=\"margin: 0;\">To visit our system, you can go through this link at any time.<a href=\"http://localhost:8080/User_Management/index.jsp\" target=\"_blank\"></p>\n"
+            + "              <p style=\"margin: 0;\">To visit our system, you can go through this link at any time.<a href=\"http://localhost:8080/User_Management/homepage.jsp\" target=\"_blank\"></p>\n"
             + "              <p style=\"margin: 0;\">User Management System, Developed by Gaman Aryal and Group</p>\n"
             + "            </td>\n"
             + "          </tr>\n"
