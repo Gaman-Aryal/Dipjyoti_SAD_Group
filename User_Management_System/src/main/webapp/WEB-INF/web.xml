@@ -4,11 +4,18 @@
         <servlet-name>Register</servlet-name>
         <servlet-class>com.mycompany.user_management.registration.Register</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteServelet</servlet-name>
+        <servlet-class>jspcrud.DeleteServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteProfile</servlet-name>
+        <servlet-class>jspcrud.DeleteProfile</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
-        <url-pattern>/signup/Register</url-pattern>
+        <url-pattern>/Register</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>AdminVerification</servlet-name>
         <servlet-class>com.mycompany.user_management.registration.AdminVerification</servlet-class>
@@ -17,14 +24,13 @@
         <servlet-name>AdminVerification</servlet-name>
         <url-pattern>/AdminVerification</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>LoginToSystem</servlet-name>
         <servlet-class>com.mycompany.user_management.login.LoginToSystem</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginToSystem</servlet-name>
-        <url-pattern>/LoginToSystem</url-pattern>
+        <url-pattern>/login/LoginToSystem</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>EmailForPasswordReset</servlet-name>
@@ -50,6 +56,15 @@
         <servlet-name>UpdatePassword</servlet-name>
         <url-pattern>/UpdatePassword</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>UserBlock</servlet-name>
+        <servlet-class>jspcrud.UserBlock</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserBlock</servlet-name>
+        <url-pattern>/UserBlock</url-pattern>
+    </servlet-mapping>
+   
     <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>com.mycompany.user_management.logout.Logout</servlet-class>
@@ -57,6 +72,39 @@
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>User_Profile</servlet-name>
+        <servlet-class>jspcrud.User_Profile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>User_Profile</servlet-name>
+        <url-pattern>/User_Profile</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateProfile</servlet-name>
+        <servlet-class>jspcrud.UpdateProfile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateProfile</servlet-name>
+        <url-pattern>/UpdateProfile</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>View_History</servlet-name>
+        <servlet-class>History.View_History</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>View_History</servlet-name>
+        <url-pattern>/View_History</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ControllerServlet</servlet-name>
+        <servlet-class>crud.ControllerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/ControllerServlet</url-pattern>
     </servlet-mapping>
     <context-param>
         <param-name>host</param-name>
@@ -66,6 +114,14 @@
         <param-name>port</param-name>
         <param-value>587</param-value>
     </context-param>
+    <servlet-mapping>
+        <servlet-name>DeleteServelet</servlet-name>
+        <url-pattern>/DeleteServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProfile</servlet-name>
+        <url-pattern>/DeleteProfile</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

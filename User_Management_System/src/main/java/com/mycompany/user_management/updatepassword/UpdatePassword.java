@@ -55,13 +55,13 @@ public class UpdatePassword extends HttpServlet {
             } else if (updm.passwordsAreSame() == false) {
                 out.println("<font color=red>Passwords are not matching.</font>");
                 rd.include(request, response);
-            } else if (updm.UsernameAsSameAsEnteredPasswordDoesExist() == true) {
+            } else if (updm.UsernameOrPasswordAsSameAsEnteredPasswordDoesExist() == true) {
                 out.println("<font color=red>We can not take password :- " + request.getParameter("updatepassword") + " please change it.</font>");
                 rd.include(request, response);
             } else {
                 updm.updatePassword();
                 updm.setBackToNormal();
-                response.sendRedirect("http://localhost:8080/User_Management_System/index.jsp");
+                response.sendRedirect("http://localhost:8080/User_Management_System/login/login.jsp");
             }
 
         }
