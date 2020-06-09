@@ -116,15 +116,16 @@
                     <main>
                         <form>
                             <div class="container-fluid">
-                                <h1 class="mt-4">Dashboard</h1>
+                                <h1 class="mt-4">Report</h1>
 
                                 
                                 <div class="card mb-4">
                                     
                                     <div class="card-body">
+                                        <h2 class="mt-4">User Blocked Report</h2>
                                         <div class="table-responsive">
                                             
-                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <table class="table table-bordered" width="100%" cellspacing="0">
                                                 <thead>
                                                     <tr>
                                                        <th>Blocked user</th>
@@ -171,6 +172,29 @@
                                         </div>
                                     </div>
                                 </div>
+                                                <H2>User added report</h2>
+                                                   <div class="card-body">
+                                        <div class="table-responsive">
+                                            <%
+                                         List<User> list=UserDao.getAllRecords();
+                                         request.setAttribute("list",list);
+                                                                           %>
+                                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Username</th>
+                                                        <th>Added Date</th>
+
+                                                    </tr>
+                                                    <c:forEach items="${list}" var="u">
+	<tr>><td>${u.getUsername()}</td>
+            <<td>${u.getCreatedDate()}</td></tr>
+</c:forEach>
+                                                </thead>
+                                                
+                                            </table>
+                                        </div>
+                                    </div>
                             </div>
                         </form>
                     </main>

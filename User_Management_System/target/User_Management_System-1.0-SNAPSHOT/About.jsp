@@ -7,13 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-      <%
-        ;
-        if (session.getAttribute("loginemail") == null) {
-            request.setAttribute("message", "You need to be logged in !!");
-            response.sendRedirect("login/login.jsp");
-        }
-    %>
+  
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -31,27 +25,26 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-     
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ml-auto">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Homepage2.jsp">Home</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/User_Management_System/User_Profile?uname=${loginemail}">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/User_Management_System/User_History.jsp">History</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="logout.jsp">Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Welcome To User Management System!</div>
-                <div class="masthead-heading text-uppercase">${loginemail} </div>
+                <div class="masthead-subheading">About User Management System!</div>
+                <div class="masthead-heading text-uppercase"><p><h6>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+                        Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through 
+                        the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
+                        written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced 
+below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum 
+et Malorum" by Cicero are also reproduced in their exact original form, accompanied 
+by English versions from the 1914 translation by H. Rackham.</h6></p> </div>
                 
             </div>
+            <button><<a class="txt2" href="index.jsp">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                </a></Button>
         </header>
 
 
