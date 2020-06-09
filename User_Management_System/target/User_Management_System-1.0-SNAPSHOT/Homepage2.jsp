@@ -7,6 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+      <%
+        ;
+        if (session.getAttribute("loginemail") == null) {
+            request.setAttribute("message", "You need to be logged in !!");
+            response.sendRedirect("login/login.jsp");
+        }
+    %>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -42,7 +49,7 @@
         <header class="masthead">
             <div class="container">
                 <div class="masthead-subheading">Welcome To User Management System!</div>
-                <div class="masthead-heading text-uppercase">Mr. ${loginemail} </div>
+                <div class="masthead-heading text-uppercase">${loginemail} </div>
                 
             </div>
         </header>
