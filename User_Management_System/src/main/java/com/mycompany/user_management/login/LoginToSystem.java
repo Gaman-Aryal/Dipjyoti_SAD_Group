@@ -87,10 +87,14 @@ public class LoginToSystem extends HttpServlet {
                       
                     response.sendRedirect("http://localhost:8080/User_Management_System/Homepage2.jsp");
                 }
-               
+               else if (jspcrud.UserDao.get_blocked_status(loginemail)=="Yes") {
+                    RequestDispatcher rd1 = getServletContext().getRequestDispatcher("/login.jsp");
+                out.println("<font color=red> You are blocked. Please contact admin</font>");
+                rd1.include(request, response);
+                }
             }else {
                 RequestDispatcher rd1 = getServletContext().getRequestDispatcher("/login.jsp");
-                out.println("<font color=red>Username or Password is not correct oryou may be blocked. Please contact admin</font>");
+                out.println("<font color=red>Username or Password is not correct or you may be blocked. Please contact admin</font>");
                 rd1.include(request, response);
             }
         }

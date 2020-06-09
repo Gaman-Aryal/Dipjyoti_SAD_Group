@@ -213,6 +213,10 @@ public static int delete(String Username){
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+            
+    
+    
+    
            public static String get_blocked_status(String Username) {
         String result = "No";
         try {
