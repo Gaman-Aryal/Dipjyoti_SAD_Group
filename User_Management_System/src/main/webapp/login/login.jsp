@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
+=======
 <%@page contentType="text/html" pageEncoding="UTF-8" session="true" language="java"%>
 <%response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");%>
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 <html lang="en">
 <head>
 	<title>Log In</title>
@@ -31,9 +34,14 @@
 				<div class="login100-pic js-tilt" data-tilt>
                                     <img src="images/man-300x300.png" alt="IMG" >
 				</div>
+<<<<<<< HEAD
+
+                            <form action="LoginToSystem" method="POST" class="login100-form validate-form">
+=======
 <h3 style="color:red">${message}</h3>
                             <form action="LoginToSystem" method="POST" class="login100-form validate-form">
                                 
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 					<span class="login100-form-title">
 						Member Login
 					</span>
@@ -45,7 +53,10 @@
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
+<<<<<<< HEAD
+=======
                                 
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<input class="input100" type="password" name="loginpassword" placeholder="Password">
@@ -56,7 +67,11 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
+<<<<<<< HEAD
+						<input type="submit" value="Login" class="login100-form-btn">
+=======
 						<input type="submit"  value="Login" class="login100-form-btn">
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 							
 					</div>
 
