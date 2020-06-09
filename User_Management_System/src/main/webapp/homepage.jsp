@@ -64,7 +64,7 @@
                  <a class="nav-link collapsed" href="Allhistory.jsp">History</a>  
                 </li>
                 <li class="nav-item">
-                 <a class="nav-link collapsed" href="#">Report</a>  
+                 <a class="nav-link collapsed" href="Report.jsp">Report</a>  
                 </li>
                 <li class="nav-item">
                 <a class="nav-link collapsed" href="/User_Management_System/User_Profile?uname=${loginemail}">
@@ -133,10 +133,12 @@
                                                         <th>Email</th>
                                                         <th>Gender</th>
                                                         <th>Phone Number</th>
+                                                        <th>Created time</th>
 
                                                     </tr>
                                                     <c:forEach items="${list}" var="u">
-	<tr><td>${u.getAdmin()}</td><td>${u.getFirstName()}</td><td>${u.getLastName()}</td><td>${u.getUsername()}</td><td>${u.getEmail()}</td><td>${u.getGender()}</td><td>${u.getPhonenumber()}</td></tr>
+	<tr><td>${u.getAdmin()}</td><td>${u.getFirstName()}</td><td>${u.getLastName()}</td><td>${u.getUsername()}</td><td>${u.getEmail()}</td>
+            <td>${u.getGender()}</td><td>${u.getPhonenumber()}</td><td>${u.getCreatedDate()}</td></tr>
 </c:forEach>
                                                 </thead>
                                                 

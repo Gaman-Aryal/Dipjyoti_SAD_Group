@@ -97,7 +97,7 @@ public class UpdateProfile extends HttpServlet {
                 
                 
                
-                RequestDispatcher rd1 = request.getRequestDispatcher("Homepage2.jsp");
+                RequestDispatcher rd1 = request.getRequestDispatcher("logout.jsp");
                 rd1.forward(request, response);
             }
         }

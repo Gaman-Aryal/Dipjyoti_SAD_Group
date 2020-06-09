@@ -43,6 +43,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
                     String time = LocalDateTime.now().toString();
 
                     History.History h = new History.History(username,time, action);
+                    History.HistoryDao.addHistory(h);
             ps.executeUpdate();
            }
             else if(UserDao.get_blocked_status(username)=="Yes"){
@@ -56,6 +57,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
                     String time = LocalDateTime.now().toString();
 
                     History.History h = new History.History(username,time, action);
+                    History.HistoryDao.addHistory(h);
             ps.executeUpdate();
             
             }
