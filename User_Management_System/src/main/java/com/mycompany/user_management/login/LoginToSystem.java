@@ -12,6 +12,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+<<<<<<< HEAD
+=======
+import java.time.LocalDateTime;
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -20,6 +24,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+<<<<<<< HEAD
+=======
+import static jspcrud.UserDao.getAdmin;
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 
 /**
  *
@@ -43,8 +51,13 @@ public class LoginToSystem extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             
+<<<<<<< HEAD
             RequestDispatcher rd1 = getServletContext().getRequestDispatcher("/login.jsp");
                 
+=======
+            
+            HttpSession session = request.getSession();
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
             String loginemail = request.getParameter("loginemail");
             String loginpassword = request.getParameter("loginpassword");
             
@@ -62,11 +75,45 @@ public class LoginToSystem extends HttpServlet {
             if(r1.next()==true) {
                 HttpSession SessionID = request.getSession();
                 SessionID.setAttribute("loginemail", loginemail);
+<<<<<<< HEAD
                 response.sendRedirect("http://localhost:8080/User_Management/homepage.jsp");
 //                RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginSuccess.jsp");
 //                rd.include(request, response);
             }else {
                 out.println("<font color=red>Username or Password is not correct.</font>");
+=======
+                
+                if (jspcrud.UserDao.getAdmin(loginemail)=="Y"&&jspcrud.UserDao.get_blocked_status(loginemail)=="No") {
+                    session.setAttribute("Username", loginemail);
+                    String action = "Logged in to the system";
+                    String time = LocalDateTime.now().toString();
+
+                    History.History h = new History.History(loginemail,time, action);//History instance
+
+                    History.HistoryDao.addHistory(h);
+
+                    response.sendRedirect("http://localhost:8080/User_Management_System/homepage.jsp");
+                }
+                else if (jspcrud.UserDao.getAdmin(loginemail)=="N"&&jspcrud.UserDao.get_blocked_status(loginemail)=="No") {
+                    session.setAttribute("Username", loginemail);
+                    String action = "Logged in to the system";
+                    String time = LocalDateTime.now().toString();
+
+                    History.History h = new History.History(loginemail,time, action);//History instance
+
+                    History.HistoryDao.addHistory(h);
+                      
+                    response.sendRedirect("http://localhost:8080/User_Management_System/Homepage2.jsp");
+                }
+               else if (jspcrud.UserDao.get_blocked_status(loginemail)=="Yes") {
+                    RequestDispatcher rd1 = getServletContext().getRequestDispatcher("/login.jsp");
+                out.println("<font color=red> You are blocked. Please contact admin</font>");
+                rd1.include(request, response);
+                }
+            }else {
+                RequestDispatcher rd1 = getServletContext().getRequestDispatcher("/login.jsp");
+                out.println("<font color=red>Username or Password is not correct or you may be blocked. Please contact admin</font>");
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
                 rd1.include(request, response);
             }
         }

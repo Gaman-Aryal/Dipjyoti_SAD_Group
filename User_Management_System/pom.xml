@@ -35,8 +35,16 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
         </dependency>
+<<<<<<< HEAD
         
 
+=======
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>

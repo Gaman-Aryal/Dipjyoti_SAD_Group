@@ -61,7 +61,11 @@ public class UpdatePassword extends HttpServlet {
             } else {
                 updm.updatePassword();
                 updm.setBackToNormal();
+<<<<<<< HEAD
                 response.sendRedirect("http://localhost:8080/User_Management/login/login.jsp");
+=======
+                response.sendRedirect("http://localhost:8080/User_Management_System/login/login.jsp");
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
             }
 
         }

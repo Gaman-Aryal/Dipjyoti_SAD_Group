@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Asus\Documents\Herald Colz\4th sem\System analysis and design\Coursework\User_Management\src\main\java\com\mycompany\user_management\codematching\ValidateEnteredCode.java
 C:\Users\Asus\Documents\Herald Colz\4th sem\System analysis and design\Coursework\User_Management\src\main\java\com\mycompany\user_management\registration\PasswordEncryptionAndDecryption.java
 C:\Users\Asus\Documents\Herald Colz\4th sem\System analysis and design\Coursework\User_Management\src\main\java\com\mycompany\user_management\updatepassword\UpdatePasswordDatabaseModel.java
@@ -8,3 +9,25 @@ C:\Users\Asus\Documents\Herald Colz\4th sem\System analysis and design\Coursewor
 C:\Users\Asus\Documents\Herald Colz\4th sem\System analysis and design\Coursework\User_Management\src\main\java\com\mycompany\user_management\forgotpassword\MailProcess.java
 C:\Users\Asus\Documents\Herald Colz\4th sem\System analysis and design\Coursework\User_Management\src\main\java\com\mycompany\user_management\login\LoginToSystem.java
 C:\Users\Asus\Documents\Herald Colz\4th sem\System analysis and design\Coursework\User_Management\src\main\java\com\mycompany\user_management\registration\Register.java
+=======
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\History\View_History.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\jspcrud\UpdateProfile.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\registration\AdminVerification.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\jspcrud\UserDao.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\jspcrud\User_Profile.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\registration\PasswordEncryptionAndDecryption.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\codematching\TestEnteredCode.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\jspcrud\User.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\History\History.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\forgotpassword\EmailForPasswordReset.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\codematching\ValidateEnteredCode.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\login\LoginToSystem.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\updatepassword\UpdatePassword.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\updatepassword\UpdatePasswordDatabaseModel.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\registration\RegistrationDatabaseModel.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\jspcrud\DeleteServelet.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\forgotpassword\MailProcess.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\registration\AdminVerificationSteps.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\com\mycompany\user_management\registration\Register.java
+C:\Users\Acer\Desktop\SAD\User_Management_System\src\main\java\History\HistoryDao.java
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087

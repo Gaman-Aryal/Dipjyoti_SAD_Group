@@ -4,6 +4,10 @@
     Author     : Asus
 --%>
 
+<<<<<<< HEAD
+=======
+<%@page import="java.time.LocalDateTime"%>
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,9 +26,23 @@
                 </tr>
             </table>
         <%
+<<<<<<< HEAD
             session.invalidate();
         %>
         <h1>You are logged out of the System</h1>
         <a href="index.jsp">Move to the Registration page</a>
+=======
+            String un = (String) session.getAttribute("loginemail");
+                    String action = "Logged out from the system";
+                    String time = LocalDateTime.now().toString();
+
+                    History.History h = new History.History(un,time, action);//History instance
+
+                    History.HistoryDao.addHistory(h);
+            session.invalidate();          
+        %>
+        <h1>You are logged out of the System</h1>
+        <a href="login/login.jsp">Move to the login page</a>
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
     </body>
 </html>

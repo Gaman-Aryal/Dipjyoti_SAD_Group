@@ -53,7 +53,11 @@ public class EmailForPasswordReset extends HttpServlet {
             } else {
                 SM.generateCode();
                 SM.sendMail("User Management System", "usermanagementsystem123@gmail.com", "Management@123");
+<<<<<<< HEAD
                 response.sendRedirect("http://localhost:8080/User_Management/entercode.jsp");
+=======
+                response.sendRedirect("http://localhost:8080/User_Management_System/entercode.jsp");
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
             }
         }
     }
