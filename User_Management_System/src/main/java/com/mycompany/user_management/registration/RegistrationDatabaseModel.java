@@ -7,9 +7,6 @@ package com.mycompany.user_management.registration;
 
 import java.io.UnsupportedEncodingException;
 import static java.lang.Character.isUpperCase;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,10 +16,6 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -46,6 +39,8 @@ public class RegistrationDatabaseModel {
     private String email;
     private String password;
     private String confirmpassword;
+    private String created_date;
+    private String blocked_status;
 
     public String getAdmin() {
         return admin;
@@ -118,6 +113,23 @@ public class RegistrationDatabaseModel {
     public void setConfirmpassword(String confirmpassword) {
         this.confirmpassword = confirmpassword;
     }
+
+    public String getCreatedDate() {
+        return created_date;
+    }
+
+    public void setCreatedDate(String created_date) {
+        this.created_date = created_date;
+    }
+
+    public String getBlockedStatus() {
+        return blocked_status;
+    }
+
+    public void setBlockedStatus(String blocked_status) {
+        this.blocked_status = blocked_status;
+    }
+    
 
     public String insertIntoAdminIsValid() {
         String str = admin;
@@ -254,6 +266,26 @@ public class RegistrationDatabaseModel {
 
     }
 
+    public boolean passwordDoesExist() {
+        Boolean checked = false;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "");
+            String Sql_Query = "select * from users where Password = ?";
+
+            PreparedStatement Pre_Stat = conn.prepareStatement(Sql_Query);
+            Pre_Stat.setString(1, password);
+            ResultSet r1 = Pre_Stat.executeQuery();
+
+            if (r1.next()) {
+                checked = true;
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(RegistrationDatabaseModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return checked;
+    }
+
     public boolean passwordIsValid() {
         String str = password;
         Boolean checked;
@@ -281,7 +313,7 @@ public class RegistrationDatabaseModel {
             NumberOfdigit++;
         }
 
-        if ((NumberOfSpecialCharacter > 0) && (NumberOfUpperCase > 0) && (NumberOfnumbers > 0) && ((NumberOfdigit >= 8) && (NumberOfdigit <= 16))) {
+        if ((NumberOfSpecialCharacter > 0) && (NumberOfUpperCase > 0) && (NumberOfnumbers > 0) && ((NumberOfdigit > 8) && (NumberOfdigit < 16))) {
             checked = true;
         } else {
             checked = false;
@@ -313,22 +345,13 @@ public class RegistrationDatabaseModel {
         return checked;
     }
 
-    SecretKey key;
-
-    public void setKey(SecretKey key) {
-        this.key = key;
-    }
-
     public void addNewUser() {
         try {
-
-            PasswordEncryptionAndDecryption pead = new PasswordEncryptionAndDecryption();
-            setPassword(pead.encryptPassword(password));
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "");
 
-            String Sql_query = "insert into users (Admin,Firstname,Lastname,Gender,Phonenumber,Username,Email,Password) values (?,?,?,?,?,?,?,?)";
+            String Sql_query = "insert into users (Admin,Firstname,Lastname,Gender,Phonenumber,Username,Email,Password,Created_date,Blocked_Status) values (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement Pre_Stat = conn.prepareStatement(Sql_query);
             Pre_Stat.setString(1, admin);
             Pre_Stat.setString(2, firstname);
@@ -338,12 +361,14 @@ public class RegistrationDatabaseModel {
             Pre_Stat.setString(6, username);
             Pre_Stat.setString(7, email);
             Pre_Stat.setString(8, password);
+            Pre_Stat.setString(9, created_date);
+            Pre_Stat.setString(10, blocked_status);
 
             Pre_Stat.execute();
             Pre_Stat.close();
             conn.close();
 
-        } catch (SQLException | ClassNotFoundException | InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException | UnsupportedEncodingException | InvalidAlgorithmParameterException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(RegistrationDatabaseModel.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -351,10 +376,10 @@ public class RegistrationDatabaseModel {
 
     public void generateCodeAndSendItToSeniourAdmin() throws ClassNotFoundException, SQLException, UnsupportedEncodingException, MessagingException {
 
-        String[] AdminsEmail = {"gamanaryal@gmail.com", "gauravraut305@gmail.com","np03a180057@heraldcollege.edu.np", "jitenghi9@gmail.com", "melonchhetri@gmail.com"};
+        String[] AdminsEmail = {"gamanaryal@gmail.com","gauravraut305@gmail.com" , "jitenghi9@gmail.com", "melonchhetri@gmail.com"};
         Random randomadmin = new Random();
         int randomadminmin = 0;
-        int randomadminmax = 4;
+        int randomadminmax = 3;
         int randomadminresult = randomadmin.nextInt(randomadminmax - randomadminmin) + randomadminmin;
 
         String str = "";

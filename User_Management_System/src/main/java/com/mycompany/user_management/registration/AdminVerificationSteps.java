@@ -31,6 +31,7 @@ public class AdminVerificationSteps {
         this.EnteredAdminCode = EnteredAdminCode;
     }
 
+
     public boolean enteredEmailIsGenuine() throws SQLException {
         Boolean checked = false;
         try {

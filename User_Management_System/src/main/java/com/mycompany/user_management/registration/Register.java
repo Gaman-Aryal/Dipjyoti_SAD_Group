@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
@@ -41,7 +42,7 @@ public class Register extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/signup/signup.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
 
             newuser.setAdmin(request.getParameter("admin"));
             newuser.setFirstname(request.getParameter("firstname"));
@@ -52,9 +53,11 @@ public class Register extends HttpServlet {
             newuser.setEmail(request.getParameter("email"));
             newuser.setPassword(request.getParameter("password"));
             newuser.setConfirmpassword(request.getParameter("confirmpassword"));
+            newuser.setCreatedDate(java.time.LocalDate.now().toString());
+            newuser.setBlockedStatus("No");
 
-            String adminresult = newuser.insertIntoAdminIsValid();
-
+        String adminresult = newuser.insertIntoAdminIsValid();
+            
             if (newuser.insertIntoGenderIsValid() == false) {
                 out.println("<font color=red>Enter Y/N in Gender box.</font>");
                 rd.include(request, response);
@@ -66,6 +69,9 @@ public class Register extends HttpServlet {
                 rd.include(request, response);
             } else if (newuser.emailDoesContainAatAndDot() == false) {
                 out.println("<font color=red>E-mail is not valid.</font>");
+                rd.include(request, response);
+            } else if (newuser.passwordDoesExist() == true) {
+                out.println("<font color=red>Try another password we can not take " + newuser.getPassword() + ".</font>");
                 rd.include(request, response);
             } else if (newuser.passwordIsValid() == false) {
                 out.println("<font color=red>Password must be 8 to 16 digit long and must contain uppercase, special character and number.</font>");
@@ -84,15 +90,26 @@ public class Register extends HttpServlet {
                 rd.include(request, response);
             } else if (adminresult.equals("notok")) {
                 newuser.addNewUser();
-                response.sendRedirect("http://localhost:8080/User_Management_System/index.jsp");
-            } else if (adminresult.equals("ok")) {
+                String id = newuser.getUsername();
+                String action = "Signed in as new user";
+                String time = LocalDateTime.now().toString();
+                History.History h = new History.History(id, time, action);
+                try {
+                    History.HistoryDao.addHistory(h);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                
+                response.sendRedirect("http://localhost:8080/User_Management_System/login/login.jsp");
+            }else if (adminresult.equals("ok")) {
                 newuser.addNewUser();
                 newuser.generateCodeAndSendItToSeniourAdmin();
                 response.sendRedirect("http://localhost:8080/User_Management_System/adminverificationpage.jsp");
-            } else {
+            }else{
                 out.println("<font color=red>Sorry Server Down.</font>");
                 rd.include(request, response);
-
+                
             }
         }
     }
