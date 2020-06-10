@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 public class UpdatePasswordDatabaseModel {
 
     private String Checkemail;
+    private String oldPassword;
     private String Updatepassword;
     private String Updateconfirmpassword;
     
@@ -50,6 +51,15 @@ public class UpdatePasswordDatabaseModel {
         return checked;
     }
 
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
+    }
+    
+
     public boolean UsernameOrPasswordAsSameAsEnteredPasswordDoesExist() {
         Boolean checked = false;
         try {
@@ -72,6 +82,34 @@ public class UpdatePasswordDatabaseModel {
         }
         return checked;
     }
+        public static boolean OldPasswordIsCorrect(String oldPassword, String username) {
+        Boolean status= false;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "");
+            String Sql_Query = "select Paaaword from users where Username = ?";
+        
+        PreparedStatement ps = conn.prepareStatement(Sql_Query);
+        
+        ps.setString(1,username);
+        
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            String pass = rs.getString("Password");
+            
+            if(oldPassword.equals(pass)){
+                status=false;
+            }
+            else{
+                status=true;
+            }
+        }
+        }catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(RegistrationDatabaseModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return status;
+    }
+  
 
     public boolean enteredEmailIsGenuine() {
         Boolean checked = false;
@@ -145,6 +183,20 @@ public class UpdatePasswordDatabaseModel {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "")) {
                 String Sql_Query = "update users set password = ? where email=?";
+                PreparedStatement Pre_Stat = conn.prepareStatement(Sql_Query);
+                Pre_Stat.setString(1, Updatepassword);
+                Pre_Stat.setString(2, Checkemail);
+                Pre_Stat.executeUpdate();
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UpdatePasswordDatabaseModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+      public void changePassword() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "")) {
+                String Sql_Query = "update users set password = ? where username=?";
                 PreparedStatement Pre_Stat = conn.prepareStatement(Sql_Query);
                 Pre_Stat.setString(1, Updatepassword);
                 Pre_Stat.setString(2, Checkemail);

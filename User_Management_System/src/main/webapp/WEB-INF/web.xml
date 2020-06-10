@@ -56,6 +56,14 @@
         <servlet-name>UpdatePassword</servlet-name>
         <url-pattern>/UpdatePassword</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>com.mycompany.user_management.updatepassword.ChangePassword</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/ChangePassword</url-pattern>
+    </servlet-mapping>
      <servlet>
         <servlet-name>UserBlock</servlet-name>
         <servlet-class>jspcrud.UserBlock</servlet-class>
