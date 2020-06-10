@@ -18,4 +18,5 @@ com\mycompany\user_management\forgotpassword\MailProcess$1.class
 jspcrud\DeleteServelet.class
 com\mycompany\user_management\forgotpassword\MailProcess.class
 com\mycompany\user_management\login\LoginToSystem.class
+History\View_History.class
 com\mycompany\user_management\registration\Register.class

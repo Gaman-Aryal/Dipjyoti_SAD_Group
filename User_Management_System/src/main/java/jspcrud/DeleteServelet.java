@@ -25,20 +25,20 @@ import javax.servlet.http.HttpServletResponse;
 public class DeleteServelet extends HttpServlet {
 protected void doGet(HttpServletRequest request, HttpServletResponse response)   
              throws ServletException, IOException {  
-        String sid=request.getParameter("Username");  
-        String id=sid.toString(); 
-          String action = "user deleated";
-                    String time = LocalDateTime.now().toString();
-
-                    History.History h = new History.History(id,time, action);
-        UserDao.delete(id);  
-                  //History instance
     try {
+        String sid=request.getParameter("Username");
+        String id=sid.toString();
+        String action = "user deleated";
+        String time = LocalDateTime.now().toString();
+        
+        History.History h = new History.History(id,time, action);
         History.HistoryDao.addHistory(h);
+        UserDao.delete(id);
+          
+        response.sendRedirect("viewusers.jsp");
     } catch (SQLException ex) {
         Logger.getLogger(DeleteServelet.class.getName()).log(Level.SEVERE, null, ex);
     }
-        response.sendRedirect("/viewusers.jsp");  
 
     
 }
