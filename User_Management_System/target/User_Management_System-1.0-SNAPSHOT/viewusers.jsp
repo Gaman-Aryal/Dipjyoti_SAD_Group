@@ -40,6 +40,7 @@ request.setAttribute("list",list);
 
 </table>
 <br/><a href="adduserform.jsp">Add New User</a>
+<br/><a href="homepage.jsp">Return to dashboard</a>
 
 </body>
 </html>
