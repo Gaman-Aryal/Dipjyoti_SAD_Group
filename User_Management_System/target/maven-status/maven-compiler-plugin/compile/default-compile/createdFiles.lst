@@ -1,5 +1,15 @@
 com\mycompany\user_management\updatepassword\UpdatePassword.class
 com\mycompany\user_management\codematching\ValidateEnteredCode.class
+<<<<<<< HEAD
+com\mycompany\user_management\forgotpassword\EmailForPasswordReset.class
+com\mycompany\user_management\registration\PasswordEncryptionAndDecryption.class
+com\mycompany\user_management\registration\RegistrationDatabaseModel.class
+com\mycompany\user_management\forgotpassword\MailProcess$1.class
+com\mycompany\user_management\forgotpassword\MailProcess.class
+com\mycompany\user_management\login\LoginToSystem.class
+com\mycompany\user_management\registration\Register.class
+com\mycompany\user_management\updatepassword\UpdatePasswordDatabaseModel.class
+=======
 com\mycompany\user_management\registration\PasswordEncryptionAndDecryption.class
 com\mycompany\user_management\registration\AdminVerification.class
 com\mycompany\user_management\updatepassword\UpdatePasswordDatabaseModel.class
@@ -19,3 +29,4 @@ History\HistoryDao.class
 com\mycompany\user_management\forgotpassword\MailProcess$1.class
 com\mycompany\user_management\login\LoginToSystem.class
 com\mycompany\user_management\registration\Register.class
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087

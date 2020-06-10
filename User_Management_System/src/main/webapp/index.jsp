@@ -8,7 +8,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
+	<title>Sign In </title>
+=======
 	<title>Sign Up </title>
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -104,24 +108,35 @@
 					</div>
                                     
 					<div class="container-login100-form-btn">
+<<<<<<< HEAD
+						<input value="Sign In" type="submit" class="login100-form-btn">
+=======
 						<input value="Sign Up" type="submit" name= "Register" class="login100-form-btn">
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 							
 		
 					</div>
                                     
                                         <div class="text-center p-t-136">
                                             Already have a account? <br>
+<<<<<<< HEAD
+						<a class="txt2" href="login/login.jsp">
+=======
 						<a  href="login/login.jsp" class="txt2">
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 							Go to login page
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
+<<<<<<< HEAD
+=======
                                 <div class="text-center p-t-136">
 						<a  href="About.jsp" class="txt2">
 							About Usermanagement System
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 				</form>
 			</div>
 		</div>

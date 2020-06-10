@@ -5,13 +5,20 @@
  */
 package com.mycompany.user_management.registration;
 
+<<<<<<< HEAD
+=======
 import java.io.UnsupportedEncodingException;
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 import static java.lang.Character.isUpperCase;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+<<<<<<< HEAD
+import java.util.logging.Level;
+import java.util.logging.Logger;
+=======
 import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Level;
@@ -23,6 +30,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 
 /**
  *
@@ -39,8 +47,11 @@ public class RegistrationDatabaseModel {
     private String email;
     private String password;
     private String confirmpassword;
+<<<<<<< HEAD
+=======
     private String created_date;
     private String blocked_status;
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 
     public String getAdmin() {
         return admin;
@@ -114,6 +125,31 @@ public class RegistrationDatabaseModel {
         this.confirmpassword = confirmpassword;
     }
 
+<<<<<<< HEAD
+    public boolean filledDataAreTooLong() {
+        Boolean checked = true;
+        String[] Array = new String[]{firstname, lastname, username};
+        int[] Count = new int[]{0, 0, 0};
+
+        for (int i = 0; i < 3; i++) {
+            String str = Array[i];
+            for (int j = 0; j < str.length(); j++) {
+                Count[i]++;
+            }
+        }
+        if (Count[0] <= 20 && Count[1] <= 20 && Count[2] <= 40) {
+            checked = false;
+        }
+
+        return checked;
+
+    }
+
+    public boolean insertIntoAdminIsValid() {
+        String str = admin;
+        Boolean checked = false;
+        int NumberOfdigit = 0;
+=======
     public String getCreatedDate() {
         return created_date;
     }
@@ -134,11 +170,30 @@ public class RegistrationDatabaseModel {
     public String insertIntoAdminIsValid() {
         String str = admin;
         String checked = "error";
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 
         for (int i = 0; i < str.length(); i++) {
 
             //Checks whether a filled contain y or not   
             if (str.charAt(i) == 'y' || str.charAt(i) == 'Y') {
+<<<<<<< HEAD
+                setAdmin("Yes");
+                NumberOfdigit++;
+
+                //Checks whether a filled contain n or not
+            } else if (str.charAt(i) == 'n' || str.charAt(i) == 'N') {
+                setAdmin("No");
+                NumberOfdigit++;
+
+            } else {
+                checked = false;
+            }
+        }
+
+        if (NumberOfdigit == 1) {
+            checked = true;
+        }
+=======
                 setAdmin("No");
                 checked = "ok";
 
@@ -168,10 +223,33 @@ public class RegistrationDatabaseModel {
             checked = false;
         }
 
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
         return checked;
 
     }
 
+<<<<<<< HEAD
+//    public boolean phoneNumberIsValid(){
+//        String str = phonenumber;
+//        Boolean checked = false;
+//        int NumberOfvaliddigit=0;
+//        
+//        for(int i = 0; i <= str.length(); i++) {  
+//            //Converting character into ASCII number            
+//            int ascii = str.charAt(i);
+//            //Checks whether phonenumber is valid or not    
+//            if((ascii>=48 && ascii<=57)) { 
+//                NumberOfvaliddigit++;
+//            }
+//        }
+//        if(NumberOfvaliddigit ==10){
+//            checked = true;
+//        }
+//        return checked;
+//    } 
+//    
+=======
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
     public boolean insertIntoGenderIsValid() {
         String str = gender;
         Boolean checked = false;
@@ -351,7 +429,11 @@ public class RegistrationDatabaseModel {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coursework?serverTimezone=UTC", "root", "");
 
+<<<<<<< HEAD
+            String Sql_query = "insert into users (Admin,Firstname,Lastname,Gender,Phonenumber,Username,Email,Password) values (?,?,?,?,?,?,?,?)";
+=======
             String Sql_query = "insert into users (Admin,Firstname,Lastname,Gender,Phonenumber,Username,Email,Password,Created_date,Blocked_Status) values (?,?,?,?,?,?,?,?,?,?)";
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
             PreparedStatement Pre_Stat = conn.prepareStatement(Sql_query);
             Pre_Stat.setString(1, admin);
             Pre_Stat.setString(2, firstname);
@@ -361,8 +443,11 @@ public class RegistrationDatabaseModel {
             Pre_Stat.setString(6, username);
             Pre_Stat.setString(7, email);
             Pre_Stat.setString(8, password);
+<<<<<<< HEAD
+=======
             Pre_Stat.setString(9, created_date);
             Pre_Stat.setString(10, blocked_status);
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 
             Pre_Stat.execute();
             Pre_Stat.close();
@@ -374,6 +459,8 @@ public class RegistrationDatabaseModel {
 
     }
 
+<<<<<<< HEAD
+=======
     public void generateCodeAndSendItToSeniourAdmin() throws ClassNotFoundException, SQLException, UnsupportedEncodingException, MessagingException {
 
         String[] AdminsEmail = {"gamanaryal@gmail.com","gauravraut305@gmail.com" , "jitenghi9@gmail.com", "melonchhetri@gmail.com"};
@@ -442,4 +529,5 @@ public class RegistrationDatabaseModel {
         Transport.send(msg);
 
     }
+>>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
 }
