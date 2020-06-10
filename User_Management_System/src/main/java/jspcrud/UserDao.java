@@ -33,8 +33,8 @@ public static int save(User u) {
                 ps.setString(6, u.getUsername());
                 ps.setString(7, u.getEmail());
                 ps.setString(8, u.getPassword());
-                ps.setString(9, u.getCreatedDate());
-                ps.setString(10, u.getBlocked_status());
+                ps.setString(9, java.time.LocalDate.now().toString());
+                ps.setString(10, "No");
                 
 		
 		status=ps.executeUpdate();
