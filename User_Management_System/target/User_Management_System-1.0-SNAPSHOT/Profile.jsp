@@ -60,7 +60,7 @@
                 <%= u.getPhonenumber() %></p>
                 <p><a href="/User_Management_System/UpdateProfile?req=show">Update Profile</a></p>
                 <p><a href="DeleteProfile?Username=${u.getUsername()}">Delete Profile</a></p>
-                <p><a href="/User_Management_System/ChangePassword?Username=${u.getUsername()}">Update Password</a></p>
+                <p><a href="/User_Management_System/editPassword.jsp">Update Password</a></p>
         </header>
 
 

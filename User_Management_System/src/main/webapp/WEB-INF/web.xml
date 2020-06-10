@@ -4,8 +4,6 @@
         <servlet-name>Register</servlet-name>
         <servlet-class>com.mycompany.user_management.registration.Register</servlet-class>
     </servlet>
-<<<<<<< HEAD
-=======
     <servlet>
         <servlet-name>DeleteServelet</servlet-name>
         <servlet-class>jspcrud.DeleteServelet</servlet-class>
@@ -14,14 +12,10 @@
         <servlet-name>DeleteProfile</servlet-name>
         <servlet-class>jspcrud.DeleteProfile</servlet-class>
     </servlet>
->>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-    
-=======
     <servlet>
         <servlet-name>AdminVerification</servlet-name>
         <servlet-class>com.mycompany.user_management.registration.AdminVerification</servlet-class>
@@ -30,7 +24,6 @@
         <servlet-name>AdminVerification</servlet-name>
         <url-pattern>/AdminVerification</url-pattern>
     </servlet-mapping>
->>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
     <servlet>
         <servlet-name>LoginToSystem</servlet-name>
         <servlet-class>com.mycompany.user_management.login.LoginToSystem</servlet-class>
@@ -39,10 +32,6 @@
         <servlet-name>LoginToSystem</servlet-name>
         <url-pattern>/login/LoginToSystem</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-    
-=======
->>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
     <servlet>
         <servlet-name>EmailForPasswordReset</servlet-name>
         <servlet-class>com.mycompany.user_management.forgotpassword.EmailForPasswordReset</servlet-class>
@@ -51,10 +40,6 @@
         <servlet-name>EmailForPasswordReset</servlet-name>
         <url-pattern>/EmailForPasswordReset</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-     
-=======
->>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
     <servlet>
         <servlet-name>ValidateEnteredCode</servlet-name>
         <servlet-class>com.mycompany.user_management.codematching.ValidateEnteredCode</servlet-class>
@@ -63,10 +48,6 @@
         <servlet-name>ValidateEnteredCode</servlet-name>
         <url-pattern>/ValidateEnteredCode</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-    
-=======
->>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
     <servlet>
         <servlet-name>UpdatePassword</servlet-name>
         <servlet-class>com.mycompany.user_management.updatepassword.UpdatePassword</servlet-class>
@@ -75,13 +56,14 @@
         <servlet-name>UpdatePassword</servlet-name>
         <url-pattern>/UpdatePassword</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-    
     <servlet>
-        <servlet-name>Logout</servlet-name>
-        <servlet-class>com.mycompany.user_management.logout.Logout</servlet-class>
-    </servlet>  
-=======
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>com.mycompany.user_management.updatepassword.ChangePassword</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/ChangePassword</url-pattern>
+    </servlet-mapping>
      <servlet>
         <servlet-name>UserBlock</servlet-name>
         <servlet-class>jspcrud.UserBlock</servlet-class>
@@ -95,14 +77,10 @@
         <servlet-name>Logout</servlet-name>
         <servlet-class>com.mycompany.user_management.logout.Logout</servlet-class>
     </servlet>
->>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
-    
-=======
     <servlet>
         <servlet-name>User_Profile</servlet-name>
         <servlet-class>jspcrud.User_Profile</servlet-class>
@@ -136,7 +114,6 @@
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/ControllerServlet</url-pattern>
     </servlet-mapping>
->>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
     <context-param>
         <param-name>host</param-name>
         <param-value>smtp.gmail.com</param-value>
@@ -145,8 +122,6 @@
         <param-name>port</param-name>
         <param-value>587</param-value>
     </context-param>
-<<<<<<< HEAD
-=======
     <servlet-mapping>
         <servlet-name>DeleteServelet</servlet-name>
         <url-pattern>/DeleteServelet</url-pattern>
@@ -155,7 +130,6 @@
         <servlet-name>DeleteProfile</servlet-name>
         <url-pattern>/DeleteProfile</url-pattern>
     </servlet-mapping>
->>>>>>> 78cce0831d3b822d2bb8fef0a2d705d2c0a4f087
     <session-config>
         <session-timeout>
             30

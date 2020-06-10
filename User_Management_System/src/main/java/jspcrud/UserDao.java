@@ -24,7 +24,7 @@ public static int save(User u) {
         
 	try{
                 Connection con = getConnection();
-		PreparedStatement ps=con.prepareStatement("insert into users(Admin,Firstname,Lastname,Gender,Phonenumber,Username,Email,Password,Created_date,Blocked_status) values(?,?,?,?,?,?,?,?,?,?)");
+		PreparedStatement ps=con.prepareStatement("insert into users(Admin,Firstname,Lastname,Gender,Phonenumber,Username,Email,Password,Created_date,Blocked_Status) values(?,?,?,?,?,?,?,?,?,?)");
 		ps.setString(1, u.getAdmin());
                 ps.setString(2, u.getFirstName());
                 ps.setString(3, u.getLastName());
@@ -33,9 +33,10 @@ public static int save(User u) {
                 ps.setString(6, u.getUsername());
                 ps.setString(7, u.getEmail());
                 ps.setString(8, u.getPassword());
+                ps.setString(9, u.getCreatedDate());
+                ps.setString(10, u.getBlocked_status());
                 ps.setString(9, java.time.LocalDate.now().toString());
                 ps.setString(10, "No");
-                
 		
 		status=ps.executeUpdate();
                
